@@ -58,8 +58,6 @@ def text_to_speech():
     # Validate input
     if not isinstance(text, str) or not text.strip():
         return jsonify({'error': 'Invalid text'}), 400
-    if len(text) > 5000:
-        return jsonify({'error': 'Text too long'}), 400
 
     async def generate_speech(txt):
         communicate = edge_tts.Communicate(txt, 'en-US-AnaNeural')
