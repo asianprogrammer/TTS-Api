@@ -22,7 +22,7 @@ app = Flask(__name__)
 allowed_origins = os.getenv("FRONTEND_ORIGINS", "").split(",")
 # Ensure non-empty list; default to localhost if not set
 if not allowed_origins or allowed_origins == ['']:
-    allowed_origins = ["http://127.0.0.1:8080", "http://localhost:8080",  "https://rxt.netlify.app" ,"https://rxt.pages.dev"]
+    allowed_origins = ["https://iodv.netlify.app" ,"https://rxt.pages.dev"]
 
 # Apply CORS only to /tts, allow POST and OPTIONS, and required headers
 CORS(app, resources={
