@@ -9,20 +9,18 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 
 # Initialize Sentry
 sentry_sdk.init(
-    dsn=os.getenv("SENTRY_DSN", ""),              # Sentry DSN
-    integrations=[FlaskIntegration()],                # Flask integration
-    traces_sample_rate=0.1,                           # adjust sample rate
+    dsn=os.getenv("SENTRY_DSN", ""),
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=0.1,
     send_default_pii=False
 )
 
 app = Flask(__name__)
 
-# Secure CORS: read allowed origins from environment variable
-# FRONTEND_ORIGINS should be a comma-separated list of origins, e.g. "http://localhost:8080,http://127.0.0.1:8080"
+
 allowed_origins = os.getenv("FRONTEND_ORIGINS", "").split(",")
-# Ensure non-empty list; default to localhost if not set
 if not allowed_origins or allowed_origins == ['']:
-    allowed_origins = ["http://127.0.0.1:8080/", "https://iodv.netlify.app" ,"https://rxt.pages.dev"]
+    allowed_origins = ["https://iodv.netlify.app" ,"https://rxt.pages.dev"]
 
 # Apply CORS only to /tts, allow POST and OPTIONS, and required headers
 CORS(app, resources={
@@ -55,7 +53,6 @@ def text_to_speech():
     data = request.get_json(force=True)
     text = data.get('text', '')
 
-    # Validate input
     if not isinstance(text, str) or not text.strip():
         return jsonify({'error': 'Invalid text'}), 400
 
