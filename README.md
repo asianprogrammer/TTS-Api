@@ -1,4 +1,4 @@
-# 🗣️ Flask API with Edge TTS (Real-time Audio Streaming)
+# Flask API with Edge TTS (Real-time Audio Streaming)
 
 This is a simple and lightweight Flask API that uses **Microsoft Edge TTS** to convert text to speech in real-time — **without saving audio files**. It streams the audio directly with adjustable bitrate for smooth performance.
 
