@@ -20,7 +20,7 @@ This is a simple and lightweight Flask API that uses **Microsoft Edge TTS** to c
 **Payload:**
 ```json
 {
-  "text": String,
-  "voice": String,
-  "bitrate": String: "48k"
+  "text": "String",
+  "voice": "String",
+  "bitrate": "48k" // default formate
 }
